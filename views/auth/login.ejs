@@ -1,0 +1,73 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+<section class="login-section vh-100 d-flex align-items-center justify-content-center mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+
+        <div class="card login-card shadow-lg border-0 rounded-4 p-4">
+          <div class="text-center mb-2">
+            <h2 class="fw-bold text-dark">
+              Login to <span class="brand-text">Go-Park</span>
+            </h2>
+            <p class="text-muted">Access your dashboard and manage bookings</p>
+          </div>
+          <% if (typeof error !== "undefined" && error) { %>
+          <div class="error-container text-center rounded-3">
+            <%= error %>
+          </div>
+          <% } %>
+          <% if (typeof success !== "undefined" && success) { %>
+          <div class="success-container text-center rounded-3 mb-2">
+            <%= success %>
+          </div>
+          <% } %>
+
+          <form action="/auth/login" method="POST" novalidate id="loginForm">
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Email Address</label>
+              <input type="text" name="email" id="loginEmail" class="form-control rounded-3 slot-main-input" value="<%= typeof email ? email : ''%>" placeholder="Enter your email" />
+              <small class="text-danger error-message" id="loginEmailError"></small>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Password</label>
+              <input type="password" name="password" id="loginPassword" class="form-control rounded-3 slot-main-input" placeholder="Enter your password" />
+              <small class="text-danger error-message" id="loginPasswordError"></small>
+            </div>
+
+            <div class="d-flex justify-content-between mb-3">
+              <div>
+                <input type="checkbox" name="remember" />
+                <small class="text-muted"> Remember me</small>
+              </div>
+              <a href="/auth/forgot-password" class="forgot-link text-decoration-none">
+                Forgot Password?
+              </a>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-lg login-btn teal-main-btn rounded-3">
+                Login
+              </button>
+            </div>
+
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="text-muted">
+              Don't have an account?
+              <a href="/auth/register" class="register-link fw-semibold text-decoration-none">
+                Register Here
+              </a>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/js/login.js" defer></script>
+<script src="/js/inputField.js"></script>

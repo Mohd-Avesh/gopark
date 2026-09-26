@@ -1,0 +1,122 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <!-- ================= SLOTS PAGE ================= -->
+  <section class="py-5 main-container" style="background: #e0f2f1">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="text-center mb-lg-5 mb-4">
+        <h2 class="fw-bold text-dark">
+          Available <span style="color: #008080">Parking Slots</span>
+        </h2>
+        <p class="text-muted mt-2">
+          Choose the best parking slot near your location
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="row slot-filter-row">
+        <div class="col-12 col-md-6 ">
+          <div class="position-relative w-100">
+            <input type="text" id="searchSlotInput" class="form-control slot-main-input pe-5" placeholder="Search slot by title, city or area" value="<%= search || '' %>" autocomplete="off" />
+            <i id="clearSearch" class="fa-solid fa-xmark position-absolute top-50 end-0 translate-middle-y me-3 text-muted" style="cursor: pointer; display: none;" title="Clear"></i>
+          </div>
+        </div>
+        <!-- Vehicle Type -->
+        <div class="col-md-6 gy-4 gy-md-0 col-12">
+          <div class="custom-dropdown" data-name="vehicleType">
+            <div class="dropdown-selected">
+              <span>
+                <%= vehicleType 
+      ? vehicleType.charAt(0).toUpperCase() + vehicleType.slice(1) 
+      : "Select vehicle type" %>
+              </span>
+              <span class="dropdown-clear <%= vehicleType ? 'show' : '' %> position-absolute  end-0">
+                <i class="fa-solid fa-xmark text-muted"></i>
+              </span>
+              <i class="arrow"></i>
+            </div>
+
+            <ul class="dropdown-options">
+              <li data-value="car">Car</li>
+              <li data-value="bike">Bike</li>
+              <li data-value="suv">SUV</li>
+            </ul>
+
+            <!-- <input type="hidden" name="vehicleType" /> -->
+            <input type="hidden" name="vehicleType" value="<%= vehicleType || '' %>" />
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Slots Grid -->
+      <div class="row mt-1 mt-md-2 g-4" id="slotsContainer" data-skip="<%= slots.length %>">
+        <% if (slots.length === 0) { %>
+        <h2>No parking slots found!!!</h2>
+        <br>
+        <div class="d-flex">
+          <button onclick="history.back()" class="btn-back btn btn-lg">
+            Back
+          </button>
+
+        </div>
+        <% } %>
+        <!-- Slot Card -->
+        <% for (slot of slots) { %>
+        <div class="col-lg-4 col-md-6 mb-2">
+          <div class="card slot-card">
+            <a href="/parking-slots/<%= slot._id%>" class="card-img-a">
+              <img src="<%= slot.imageURL %>?w=400&h=200&fit=crop&auto=format&q=90" alt="parking image" />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title fw-bold ">
+                <%= slot.title%>
+              </h5>
+              <p class="text-dark mb-1 card-location">
+                <span class="location-icon"></span><%= slot.location.split(",").slice(-2).join(",").trim()%>, <%= slot.country %>
+              </p>
+              <p class="small text-muted">
+                <%= slot.description %>
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="badge <%= slot.isAvailable ? 'bg-success' : 'bg-danger' %>">
+                  <%= slot.isAvailable ? 'Available' : 'Full' %>
+                </span>
+                <span class="fw-bold text-dark">
+                  &#8377;<%= slot.pricePerHour %>/hr
+                </span>
+              </div>
+            </div>
+
+            <div class="card-footer bg-white border-0">
+              <% if (slot.isAvailable) { %>
+              <a href="/parking-slots/<%= slot._id%>/book" class="btn w-100 teal-main-btn slot-btn">
+                Book Slot
+              </a>
+              <% } else { %>
+              <button class="btn w-100 btn-secondary slot-diabled-btn" disabled>
+                Not Available
+              </button>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+
+      </div><% if (!search && !vehicleType) { %>
+      <div class="text-center mt-5">
+        <button id="loadMoreBtn" class="btn btn-outline-dark px-5">
+          Load More
+        </button>
+      </div>
+      <% } %>
+
+    </div>
+  </section>
+  <script src="/js/dropdown.js"></script>
+  <script src="/js/inputSearch.js"></script>
+  <script src="/js/inputField.js"></script>
+  <script src="/js/loadmore.js"></script>
+</body>

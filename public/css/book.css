@@ -1,0 +1,70 @@
+.theme-bg,.pt-navbar {
+    background: #e0f2f1;
+}
+
+.theme-card {
+    border: 2px solid #008080;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.08);
+}
+
+.theme-accent {
+    color: #008080;
+}
+
+hr{
+    background-color: #008080;
+    outline: none;
+    border: none;
+    height: 2px;
+    width: 100%;
+    opacity: 1;
+}
+
+.price-badge {
+    background: rgba(0, 128, 128, 0.1);
+    border: 2px solid #008080;
+    color: black;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn-theme {
+    background: linear-gradient(135deg, #008080, #00b3b3);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-theme:hover {
+    background: linear-gradient(135deg, #006666, #009999);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+
+.price-and-vehicle,
+.booking-summary{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.booking-summary-main{
+    background-color: #e0f2f1;
+}
+
+.vehicle-type-badge{
+    height: 28px;
+  background-color: #008080;
+  color: white;
+  cursor: context-menu;
+}

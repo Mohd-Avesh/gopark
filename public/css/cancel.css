@@ -1,0 +1,101 @@
+/* ================= CANCEL PAGE ================= */
+
+.cancel-page {
+  background: var(--accent);
+  min-height: 85vh;
+  padding: 60px 0;
+}
+
+/* Header */
+.cancel-header {
+  margin-bottom: 40px;
+}
+
+.cancel-title {
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.cancel-subtitle {
+  color: var(--text);
+  opacity: 0.7;
+}
+
+/* Card */
+.cancel-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+}
+
+.cancel-card-body {
+  padding: 10px 20px;
+}
+
+/* Booking Details */
+.booking-details-heading {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--secondary);
+}
+
+.booking-detail-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.booking-detail-item span {
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* Warning */
+.cancel-warning {
+  margin-top: 20px;
+  padding: 12px;
+  background: var(--accent);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.cancel-actions {
+  margin-top: 25px;
+}
+
+.confirm-cancel-btn {
+  background: #c62828;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.confirm-cancel-btn:hover {
+  background: #8e0000;
+  color: #fff;
+}
+
+/* Icon spacing */
+.cancel-title-icon {
+  color: #c62828;
+  margin-right: 8px;
+}
+
+.booking-detail-item i {
+  margin-right: 6px;
+  color: var(--primary);
+}
+
+.warning-icon {
+  color: #d32f2f;
+  margin-right: 6px;
+}
+
+/* Make icons align nicely */
+.booking-detail-item span {
+  display: flex;
+  align-items: center;
+}

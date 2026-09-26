@@ -1,0 +1,89 @@
+/* ===== CONTACT PAGE (Auth Style) ===== */
+
+.auth-section {
+  min-height: 100vh;
+  background: #e0f2f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 15px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== HEADING ===== */
+
+.auth-card h3 {
+  text-align: center;
+  font-weight: 700;
+  color: #008080;
+  margin-bottom: 25px;
+}
+
+.brand-text {
+  color: #008080;
+}
+
+/* ===== LABELS ===== */
+
+.auth-card label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* ===== BUTTON ===== */
+
+.auth-btn {
+  background: #008080;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  border: none;
+}
+
+.auth-btn:hover {
+  background: #006666;
+}
+
+/* ===== ALERTS ===== */
+
+.auth-alert {
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* success message */
+.success-container {
+  background: #e0f2f1;
+  color: #006666;
+  font-weight: 600;
+}
+
+
+.error-message {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+textarea.slot-main-input {
+  resize: none;
+}
+
+.slot-main-input{
+  background-color: #f0fbfb;
+}

@@ -1,0 +1,55 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<section class="auth-section d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10 col-lg-4 col-md-6">
+
+        <div class="card auth-card text-center shadow-lg border-0 rounded-4 p-4">
+
+          <!-- Brand -->
+          <div class="brand-title mb-3">
+            <h2 class="fw-bold">GO <span>PARK</span></h2>
+          </div>
+
+          <h4 class="fw-semibold mb-2">Verify Your Email</h4>
+          <p class="text-muted mb-4">
+            Enter the 6-digit OTP sent to your email address.
+          </p>
+
+          <% if (error) { %>
+          <div class="error-container text-center rounded-3">
+            <%= error %>
+          </div>
+          <% } %>
+
+          <form action="/auth/verify-email" method="POST" novalidate>
+
+            <div class="mb-4">
+              <input type="text" name="otp" class="form-control otp-input text-center fw-bold slot-main-input" placeholder="Enter OTP" maxlength="6" required />
+            </div>
+
+            <button type="submit" class="btn login-btn w-100 rounded-3 teal-main-btn">
+              Verify Email
+            </button>
+
+          </form>
+
+          <div class="mt-4">
+            <small class="text-muted">
+              Didn't receive OTP?
+              <button href="/auth/resend-otp" class="resend-link" id="resendOtp">
+                Resend <span id="timer"></span>
+              </button>
+            </small>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/register.js"></script>
+<script src="/js/inputField.js"></script>

@@ -1,0 +1,171 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<!-- ================= HERO ================= -->
+<section class="hero-section py-5 text-center">
+  <div class="container">
+    <h1 class="display-5 fw-bold text-dark">
+      Smart <span class="text-teal">Parking Solutions</span>
+    </h1>
+
+    <p class="lead text-muted mt-3">
+      A reliable platform to discover, reserve, and manage parking spaces with
+      real-time availability.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+      <a href="/parking-slots" class="btn btn-lg teal-main-btn">
+        Find Parking
+      </a>
+      <% if(!user){%>
+      <a href="/auth/register" class="btn btn-lg btn-outline-secondary btn-create-acc">
+        Create Account
+      </a>
+      <% } %>
+    </div>
+    <div class="row mt-5 g-4">
+      <div class="col-6 col-md-3">
+        <p class="fw-bold mb-1 text-teal">24/7</p>
+        <small class="text-muted">Availability</small>
+      </div>
+      <div class="col-6 col-md-3">
+        <p class="fw-bold mb-1 text-teal">Real-Time</p>
+        <small class="text-muted">Slot Status</small>
+      </div>
+      <div class="col-6 col-md-3">
+        <p class="fw-bold mb-1 text-teal">Secure</p>
+        <small class="text-muted">Payments</small>
+      </div>
+      <div class="col-6 col-md-3">
+        <p class="fw-bold mb-1 text-teal">Smart</p>
+        <small class="text-muted">Navigation</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section class="benefits-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-semibold">Benefits for Drivers</h2>
+      <p class="text-muted">Everything you need for stress-free parking</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <ul class="list-unstyled benefits-list">
+          <li>Save time searching for parking</li>
+          <li>Avoid traffic congestion</li>
+          <li>Transparent pricing</li>
+          <li>Verified parking locations</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-unstyled benefits-list">
+          <li>Advance booking options</li>
+          <li>Easy cancellations</li>
+          <li>Booking history & invoices</li>
+          <li>Mobile-friendly access</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOR OWNERS ================= -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-semibold">For Parking Owners</h2>
+      <p class="text-muted">List your parking space and earn effortlessly</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card feature-card p-4 h-100">
+          <h5 class="fw-semibold">Easy Listing</h5>
+          <p class="text-muted">
+            Add your parking slots with pricing and availability.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card p-4 h-100">
+          <h5 class="fw-semibold">Manage Bookings</h5>
+          <p class="text-muted">
+            Track reservations, timings, and earnings in one place.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card p-4 h-100">
+          <h5 class="fw-semibold">Maximize Revenue</h5>
+          <p class="text-muted">
+            Earn from unused spaces with dynamic pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-semibold">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h6 class="fw-bold">Is Go-Park free to use?</h6>
+        <p class="text-muted">
+          Yes, searching and browsing parking locations is completely free.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h6 class="fw-bold">Can I cancel a booking?</h6>
+        <p class="text-muted">
+          Yes, cancellations are allowed based on the parking policy.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h6 class="fw-bold">Are payments secure?</h6>
+        <p class="text-muted">
+          All payments are encrypted and processed securely.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h6 class="fw-bold">Do I get a parking receipt?</h6>
+        <p class="text-muted">
+          Yes, invoices are available in your booking history.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<% if (!user) { %>
+<!-- User NOT logged in -->
+<section class="cta-section py-5 text-center">
+  <div class="container text-white">
+    <h2 class="fw-semibold mb-3">Ready to Park Smarter?</h2>
+    <p class="mb-4">Join Go-Park today and simplify your parking experience.</p>
+    <a href="/auth/register" class="btn btn-light btn-lg account-button">
+      Create Account
+    </a>
+  </div>
+</section>
+<% } else { %>
+<!-- User IS logged in -->
+<section class="cta-section py-5 text-center bg-teal">
+  <div class="container text-white">
+    <h2 class="fw-semibold mb-3">Welcome Back!</h2>
+    <p class="mb-4">Manage your bookings and parking slots easily.</p>
+    <a href="/bookings" class="btn btn-light btn-lg account-button">
+      View My Bookings
+    </a>
+  </div>
+</section>
+<% } %>

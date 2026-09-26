@@ -1,0 +1,70 @@
+/* ===== COLOR SYSTEM ===== */
+:root {
+  --primary: #008080;
+  --secondary: #2d2d2d;
+  --background: #ffffff;
+  --accent: #e0f2f1;
+  --light-bg: #f9f9f9;
+  --text: #212121;
+}
+
+/* ===== GLOBAL HELPERS ===== */
+.text-teal {
+  color: var(--primary);
+}
+
+/* ===== HERO ===== */
+.hero-section {
+  background: var(--accent);
+}
+
+/* ===== BENEFITS ===== */
+.benefits-section {
+  background: var(--light-bg);
+}
+
+.benefits-list li {
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1.2rem;
+  padding-right: 2rem;
+}
+
+.benefits-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ===== FEATURE CARDS ===== */
+.feature-card {
+  border: none;
+  transition: transform 0.4s ease;
+  border: 2px solid #006666;
+}
+
+.feature-card:hover {
+  box-shadow: 0 2px 10px rgba(0, 128, 128, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ===== FAQ ===== */
+.faq-section {
+  background: var(--light-bg);
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  background: var(--primary);
+}
+
+.account-button:hover {
+  background-color: var(--accent);
+  border: 1px solid var(--secondary);
+}
+
+.btn-create-acc:hover {
+  transition: all 0.2s ease-in;
+}

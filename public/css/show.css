@@ -1,0 +1,98 @@
+ :root {
+  --primary: #008080;
+  --secondary: #2d2d2d;
+  --background: #ffffff;
+  --accent: #e0f2f1;
+  --text: #212121;
+}
+
+.show-card-img {
+  border-radius: 12px !important;
+}
+.show-card {
+  border: 2px solid var(--secondary);
+  border-radius: 13px !important;
+}
+
+/* ===== IMAGE CARD ===== */
+.show-card {
+  border: 2px solid var(--secondary);
+  border-radius: 14px;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.show-card-img {
+  border-radius: 14px;
+  transition: transform 0.3s ease;
+  height: 380px;
+  object-fit: cover;
+}
+
+.show-card:hover .show-card-img {
+  transform: scale(1.03);
+}
+
+/* ===== HEADINGS ===== */
+h2, h5 {
+  color: var(--secondary);
+}
+
+
+/* ===== DETAILS CARD ===== */
+.card {
+  border-radius: 14px;
+  border: 1px solid var(--secondary);
+  background-color: var(--light-bg);
+}
+
+
+.show-card-title{
+  font-size: 16px;
+  font-weight: 500;
+  cursor: context-menu;
+}
+.location-icon{
+  color: #008080;
+}
+.card-body{
+  background-color: var(--background);
+  border-radius: 14px;
+  cursor: context-menu;
+}
+
+
+.card-body p {
+  color: var(--text);
+  opacity: 1;
+  font-size: 0.85rem;
+}
+
+.card-body h6 {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.card-body-desc h5{
+  color: var(--primary);
+}
+
+/* ===== STATUS (USING SAME COLORS) ===== */
+.status-available {
+  color: var(--primary);
+}
+
+.status-occupied {
+  color: var(--secondary);
+  opacity: 0.6;
+}
+
+.pt-navbar{
+  background-color: #e0f2f1;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  border: 1px solid var(--text);
+}

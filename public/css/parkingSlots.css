@@ -1,0 +1,141 @@
+/* Search */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+#searchSlotInput{
+  border-radius: 6px;
+  height: 38px;
+}
+
+/* Selected box */
+.dropdown-selected {
+  background: #fff;
+  border: 1px solid #008080;
+  border-radius: 6px;
+  padding: 12px 16px;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.dropdown-selected:hover {
+  border-color: #008080;
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.5);
+  background-color: #f0fbfb;
+  outline: none;
+}
+
+.dropdown-clear {
+  display: none;
+  cursor: pointer;
+  margin-right: 32px;
+}
+
+.dropdown-clear.show {
+  display: inline;
+}
+
+
+/* Arrow */
+.arrow {
+  border: solid #555;
+  border-width: 0 2px 2px 0;
+  padding: 4px;
+  transform: rotate(45deg);
+  transition: transform 0.4s ease;
+}
+
+.custom-dropdown.open .arrow {
+  transform: rotate(-135deg);
+}
+
+/* Dropdown menu */
+.dropdown-options {
+  list-style: none;
+  padding: 0px;
+  margin: 6px 0 0;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--primary);
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.custom-dropdown.open .dropdown-options {
+  display: block;
+}
+
+/* Options */
+.dropdown-options li {
+  border-radius: 6px;
+  padding: 8px 16px;
+  height: 38px;
+  cursor: pointer;
+  transition: border background 0.2s;
+  font-size: 15px;
+}
+
+.dropdown-options li:hover {
+  border: 1px solid #008080;
+  background: #e0f2f1;
+  padding: 7px 15px;
+}
+
+/* Slot Cards */
+.slot-card {
+  border-radius: 14px;
+  transition: all 0.4s ease;
+}
+
+.slot-card:hover {
+  transform: translateY(-6px);
+}
+.slot-card a {
+  transition: all 0.3s ease-out;
+}
+.card-img-a:hover {
+  opacity: 0.6;
+}
+.location-icon::before {
+  content: "📍";
+}
+
+.slot-btn {
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* Card Image */
+.slot-card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.card-footer {
+  border-radius: 14px !important;
+  padding-bottom: 16px;
+  padding-top: 0;
+}
+
+.card-location {
+  margin-left: -5px;
+  font-weight: 400;
+}
+
+.slot-diabled-btn {
+  text-decoration: line-through;
+  font-weight: 500;
+}
+

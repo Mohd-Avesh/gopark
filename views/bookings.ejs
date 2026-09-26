@@ -1,0 +1,185 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<section class="booking-section pt-5 pb-5">
+  <div class="container">
+
+    <div class="text-center mb-4">
+      <h2 class="page-title">
+        My <span class="brand-text">Bookings</span>
+      </h2>
+      <p class="page-subtitle">Manage your parking slots</p>
+    </div>
+
+    <% if (typeof error !== "undefined" && error) { %>
+    <div class="error-container text-center rounded-3 mb-2">
+      <%= error %>
+    </div>
+    <% } %>
+
+    <% if (bookings.length === 0) { %>
+    <div class="empty-booking-container text-center">
+
+      <div class="empty-booking-box">
+        <h4 class="empty-title">No Bookings Yet</h4>
+        <p class="empty-subtitle">
+          You haven’t booked any parking slots yet.
+        </p>
+
+        <a href="/parking-slots" class="empty-action-btn">
+          Book a Slot
+        </a>
+      </div>
+
+    </div>
+    <% } else {%>
+    <div class="table-wrapper">
+      <table class="booking-table">
+
+        <thead>
+          <tr>
+            <th>Spot</th>
+            <th>Date</th>
+            <th>Timing</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Receipt/Cancel Booking</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% bookings.forEach(b => { %>
+          <tr class="booking-row">
+
+            <td class="booking-spot">
+              <%= b.spot ? b.spot.title : "N/A" %>
+            </td>
+
+            <td class="booking-date"><%=b.formattedDate %></td>
+            <% if(b.bookingStatus === "cancelled") {%>
+            <td class="booking-time">
+              --:-- - --:--
+            </td>
+            <% }else{ %>
+            <td class="booking-time">
+              <%= b.startTime %> - <%= b.endTime %>
+            </td>
+            <% } %>
+            <td>
+              <% if (b.displayStatus === "pending") { %>
+              <span class="badge-status badge-pending">Pending Payment</span>
+
+              <% } else if (b.displayStatus === "upcoming") { %>
+              <span class="badge-status badge-upcoming">Upcoming</span>
+
+              <% } else if (b.displayStatus === "active") { %>
+              <span class="badge-status badge-active">Active</span>
+
+              <% } else if (b.displayStatus === "completed") { %>
+              <span class="badge-status badge-complete">Completed</span>
+
+              <% } else { %>
+              <span class="badge-status badge-cancel">Cancelled</span>
+              <% } %>
+            </td>
+            <td>
+
+              <% if (b.displayStatus === "pending") { %>
+
+              <a href="/bookings/<%= b._id %>/pay" class="btn teal-main-btn">
+                Pay
+              </a>
+
+              <% } else if (b.displayStatus === "completed") { %>
+
+              <span class="fw-semibold">Completed</span>
+
+              <% } else if (b.displayStatus === "active" || b.displayStatus === "upcoming") { %>
+
+              <span class="text-paid">Paid</span>
+
+              <% } else { %>
+
+              <span class="text-muted-light">Cancelled</span>
+
+              <% } %>
+
+            </td>
+            <td class="receipt-and-cancel">
+
+              <% if (b.displayStatus === "active" || b.displayStatus === "upcoming") { %>
+
+              <div class="d-flex align-items-center gap-2">
+                <a href="/booking/<%= b._id %>/receipt" class="btn btn-outline-primary-theme">
+                  View Receipt
+                </a>
+                <% if (b.displayStatus !== "active") { %>
+                <!-- Cancel Booking Form Trigger -->
+                <form action="/booking/<%= b._id %>/cancel" method="POST" class="booking-cancel-form mb-0">
+                  <button type="button" class="cancel-btn btn" data-bs-toggle="modal" data-bs-target="#cancelModal-<%= b._id %>">
+                    Cancel Booking
+                  </button>
+                </form>
+                <% } %>
+              </div>
+
+              <!-- Unique Modal -->
+              <div class="modal fade" id="cancelModal-<%= b._id %>" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content modal-cancel-style">
+
+                    <div class="modal-header modal-cancel-header">
+                      <h5 class="modal-title">Confirm Cancellation</h5>
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body modal-cancel-body">
+                      Are you sure you want to cancel this booking?
+                    </div>
+
+                    <div class="modal-footer modal-cancel-footer">
+
+                      <!-- Correct Form Submit -->
+                      <form action="/booking/<%= b._id %>/cancel" method="POST">
+                        <button type="submit" class="btn cancel-btn">
+                          Yes, Cancel
+                        </button>
+                      </form>
+
+                      <button type="button" class="btn teal-main-btn" data-bs-dismiss="modal">
+                        No
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <% } else if (b.displayStatus === "pending") { %>
+
+              <span class="text-muted btn btn-outline-primary-theme disabled">
+                Not Paid
+              </span>
+              <% } else if (b.bookingStatus === "cancelled") { %>
+              <span class="text-muted btn btn-outline-primary-theme disabled">
+                Cancelled
+              </span>
+              <% } else { %>
+
+              <span class="text-muted btn btn-outline-primary-theme disabled">
+                Done
+              </span>
+
+              <% } %>
+
+            </td>
+
+          </tr>
+          <% }) %>
+        </tbody>
+
+      </table>
+    </div>
+    <% } %>
+  </div>
+</section>

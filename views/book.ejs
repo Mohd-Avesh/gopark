@@ -1,0 +1,101 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<div class="container py-5 mt-3 theme-bg">
+  <div class="row g-4">
+
+    <!-- ================= SLOT DETAILS ================= -->
+    <div class="col-lg-5">
+      <div class="card theme-card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="card-body p-4">
+          <h3 class="fw-bold theme-accent mb-2"><%= slot.title %></h3>
+          <p class="mb-2">
+            <%= slot.location %>, <%= slot.country %>
+          </p>
+          <div class="price-and-vehicle">
+            <div class="price-badge mb-1 fs-6">
+              &#8377; <%= slot.pricePerHour %> / hour
+            </div>
+            <!-- Vehicle Type Badge -->
+            <span class="badge mb-1 mt-2 px-3 py-2 vehicle-type-badge">
+              Vehicle Type: <%= slot.vehicleType.toUpperCase() %>
+            </span>
+          </div>
+          <hr>
+          <ul class="list-unstyled small text-muted">
+            <li>CCTV Surveillance</li>
+            <li>Secure Parking</li>
+            <li>24x7 Access</li>
+          </ul>
+          <p class="mt-3 mb-1">
+            <%= slot.description %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--BOOKING FORM -->
+    <div class="col-lg-7">
+      <div class="card theme-card shadow-lg border-0 rounded-4 p-4">
+        <div class="card-body">
+          <h3 class="fw-bold mb-4">
+            Book Your Slot <span class="theme-accent">Now</span>
+          </h3>
+
+          <form id="bookingForm" action="/parking-slots/<%= slot._id %>/checkout" method="POST" novalidate>
+
+            <!-- Booking Date -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Booking Date</label>
+              <input type="date" name="date" id="bookingDate" class="form-control slot-main-input" required>
+            </div>
+
+            <!-- Time & Duration -->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Start Time</label>
+                <input type="time" name="startTime" id="startTime" class="form-control slot-main-input" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Duration (Hours)</label>
+                <input type="number" name="durationHours" id="durationHours" min="1" max="24" class="form-control slot-main-input" placeholder="Enter hours (max 24)" required>
+              </div>
+            </div>
+
+            <!-- Vehicle Number -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Vehicle Number</label>
+              <input type="text" name="vehicleNumber" class="form-control slot-main-input" id="vehicleNumber" autocomplete="off" placeholder="MH12AB1234" required>
+            </div>
+
+            <!-- Hidden Fields -->
+            <input type="hidden" id="pricePerHour" value="<%= slot.pricePerHour %>">
+            <input type="hidden" name="totalPrice" id="finalTotalPrice">
+
+            <!-- Error Message -->
+            <div id="timeError" class="text-danger fw-semibold mb-2"></div>
+
+            <!-- Booking Summary -->
+            <div class="p-3 rounded-3 mb-4 border booking-summary-main">
+              <h6 class="fw-bold mb-2">Booking Summary</h6>
+              <div class="booking-summary">
+                <p>Price Per Hour: ₹ <%= slot.pricePerHour %></p>
+                <p class="me-1">End Time: <span id="endTimeCalc">00:00</span></p>
+              </div>
+              <p class="fw-bold theme-accent">
+                Total Price: ₹ <span id="totalPrice">0</span>
+              </p>
+            </div>
+
+            <button id="submitBtn" class="btn btn-theme w-100 py-2 rounded-3 shadow">
+              Confirm Booking
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="/js/priceCalculation.js"></script>
+<script src="/js/inputField.js"></script>

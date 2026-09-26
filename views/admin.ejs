@@ -1,0 +1,37 @@
+<%- layout('layouts/boilerplate.ejs') %>
+<div class="admin-container mt-4">
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <h2 class="brand">Admin Panel</h2>
+    <ul>
+      <li><a href="/admin/dashboard">Dashboard</a></li>
+      <li><a href="/admin/users">Users</a></li>
+      <li><a href="/admin/bookings">Bookings</a></li>
+      <li><a href="/admin/settings">Settings</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Welcome, <%= user.name %></h1>
+    </header>
+
+    <section class="admin-content">
+      <h2>Dashboard</h2>
+      <p>This is your admin panel. Use the sidebar to navigate.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p><%= totalUsers %></p>
+        </div>
+        <div class="card">
+          <h3>Total Bookings</h3>
+          <p><%= totalBookings %></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

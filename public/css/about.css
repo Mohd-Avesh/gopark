@@ -1,0 +1,122 @@
+:root {
+  --primary: #008080;
+  --secondary: #2d2d2d;
+  --background: #ffffff;
+  --accent: #e0f2f1;
+  --light-bg: #f9f9f9;
+  --text: #212121;
+}
+
+/* ===== ABOUT HERO ===== */
+.about-hero-section {
+  background-color: var(--accent);
+}
+
+.brand-highlight {
+  color: var(--primary);
+}
+
+/* ===== STORY SECTION ===== */
+.about-story-section {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* ===== MISSION SECTION ===== */
+.about-mission-section {
+  background-color: var(--light-bg);
+}
+
+.mission-description {
+  max-width: 650px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ===== FEATURES SECTION ===== */
+.about-features-section {
+  background-color: var(--accent);
+}
+
+.feature-card {
+  background-color: var(--background);
+  border-radius: 8px;
+  border: 2px solid var(--primary) !important;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  color: var(--secondary);
+}
+
+/* ===== WHY SECTION ===== */
+.why-go-park-section {
+  background-color: var(--background);
+}
+
+.why-subtitle {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.why-card {
+  background-color: var(--background);
+  border: 1px solid var(--primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== CTA SECTION ===== */
+.about-cta-section {
+  background-color: var(--background);
+}
+
+.explore-slots-btn {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.explore-slots-btn:hover {
+  background-color: var(--secondary);
+  color: #ffffff;
+}
+
+/* ===== SECTION HEADINGS ===== */
+.section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* ===== IMAGE EFFECT ===== */
+.about-story-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-story-image:hover {
+  transform: scale(1.03);
+}
+.about-cta-section{
+    background-color: var(--light-bg);
+}

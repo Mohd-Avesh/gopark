@@ -1,0 +1,92 @@
+<body>
+  <nav class="navbar navbar-expand-md navbar-slot">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="/home">
+        <img src="/images/Project_LOGO1.png" alt="Logo" height="60" width="110" />
+      </a>
+
+      <!-- Toggler -->
+      <button class="navbar-toggler custom-toggler pb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+        <span class="toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Content -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Nav Links -->
+        <div class="navbar-nav ms-lg-3">
+          <a class="nav-link nav-text <%= currentPath === '/home' ? 'active' : '' %>" href="/home">
+            Home
+          </a>
+
+          <a class="nav-link nav-text <%= currentPath === '/about' ? 'active' : '' %>" href="/about">
+            About
+          </a>
+
+          <a class="nav-link nav-text <%= currentPath === '/parking-slots' ? 'active' : '' %>" href="/parking-slots">
+            Parking Slots
+          </a>
+
+          <a class="nav-link nav-text <%= currentPath === '/bookings' ? 'active' : '' %>" href="/bookings">
+            Bookings
+          </a>
+          <a class="nav-link nav-text <%= currentPath === '/dashboard' ? 'active' : '' %>" href="/dashboard">
+            Dashboard
+          </a>
+
+          <a class="nav-link nav-text <%= currentPath === '/contact' ? 'active' : '' %>" href="/contact">
+            Contact
+          </a>
+
+        </div>
+
+        <!-- Right Side -->
+        <div class="ms-auto d-flex flex-column flex-md-row gap-2 mt-3 mt-md-0">
+          <!-- Search -->
+          <% if (typeof hideSearch === "undefined" || !hideSearch) { %>
+          <form class="d-flex needs-validation" novalidate action="/parking-slots">
+            <input id='searchSlotInput' class="form-control me-2" type="search" autocomplete="off" required placeholder="Search by city or area" name="search" />
+            <button class="btn btn-outline-primary-theme" type="submit">
+              Search
+            </button>
+          </form>
+          <% } %>
+
+          <!-- Buttons -->
+          <% if (typeof user !== "undefined" && user) { %>
+
+          <!-- Profile Dropdown -->
+          <div class="dropdown">
+            <a class="d-flex align-items-center text-decoration-none" role="button" data-bs-toggle="dropdown">
+
+              <!-- Profile Icon -->
+              <div class="avatar-circle">
+                <%= user.name.charAt(0).toUpperCase() %>
+              </div>
+
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end user-menu">
+              <li><a class="dropdown-item user-menu-item" href="/profile">My Profile</a></li>
+              <li><a class="dropdown-item user-menu-item" href="/bookings">My Bookings</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item user-menu-item logout-btn" href="/auth/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+
+          <% } else { %>
+
+          <!-- Guest Buttons -->
+          <a class="btn btn-outline-primary-theme" href="/auth/login">Login</a>
+          <a class="btn teal-main-btn" href="/auth/register">Register</a>
+
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</body>

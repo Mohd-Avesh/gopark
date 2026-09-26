@@ -1,0 +1,24 @@
+<%- layout('layouts/boilerplate.ejs') %>
+<section class="edit-profile-section">
+  <div class="container">
+    <div class="edit-profile-card">
+      <h2>Edit Profile</h2>
+
+      <form action="/profile/edit" method="POST">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="<%= user.name %>" required class="slot-main-input">
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="phone" value="<%= user.phone %>" required class="slot-main-input">
+        </div>
+
+        <button type="submit" class="btn-save">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</section>

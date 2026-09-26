@@ -1,0 +1,136 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<section class=" mt-4 dashboard-section">
+
+  <div class="container">
+    <div class="dashboard-card">
+
+      <!-- Header -->
+      <div class="dashboard-header d-flex justify-content-between align-items-center mb-4">
+        <h3>
+          Welcome, <span class="brand-text"><%= user.name %></span>
+        </h3>
+
+        <div>
+          <a href="/profile" class="dashboard-btn me-2">Profile</a>
+          <a href="/auth/logout" class="btn logout-btn2">Logout</a>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+          <div class="dashboard-action-card p-3 text-center h-100">
+            <h5>Book Parking</h5>
+            <p>Reserve your parking slot easily</p>
+            <a href="/parking-slots" class="dashboard-btn teal-main-btn w-100">Book Now</a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="dashboard-action-card p-3 text-center h-100">
+            <h5>My Bookings</h5>
+            <p>View and manage bookings</p>
+            <a href="/bookings" class="dashboard-btn w-100">View</a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="dashboard-action-card p-3 text-center h-100">
+            <h5>Profile</h5>
+            <p>Manage your account</p>
+            <a href="/profile" class="dashboard-btn w-100">Open</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recent Bookings -->
+      <div class="booking-section">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold mb-0">
+            Recent <span class="brand-text">Bookings</span>
+          </h5>
+        </div>
+
+        <% if (bookings.length === 0) { %>
+        <div class="empty-state text-center py-4">
+          <p class="text-muted mb-0">No bookings yet.</p>
+        </div>
+        <% } else { %>
+
+        <div class="table-responsive">
+          <table class="table dashboard-table align-middle">
+
+            <thead>
+              <tr>
+                <th>Spot</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Payment</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% bookings.forEach(b => { %>
+              <tr>
+
+                <td class="fw-semibold">
+                  <%= b.spot?.title || "N/A" %>
+                </td>
+
+                <td>
+                  <%= b.spot.location.split(", ").slice(2, 4).join(", ") %>
+                </td>
+
+                <td>
+                  <%= b.formattedDate %>
+                </td>
+
+                <!-- Booking Status -->
+                <td>
+                  <% if (b.bookingStatus === "confirmed") { %>
+                  <span class="status-badge status-confirmed">Confirmed</span>
+                  <% } else if (b.bookingStatus === "cancelled") { %>
+                  <span class="status-badge status-cancelled">Cancelled</span>
+                  <% } else { %>
+                  <span class="status-badge status-pending">Pending</span>
+                  <% } %>
+                </td>
+
+                <!-- Payment Status -->
+                <td>
+                  <% if (b.paymentStatus === "paid") { %>
+                  <span class="status-badge status-paid">Paid</span>
+                  <% } else if (b.paymentStatus === "failed") { %>
+                  <span class="status-badge status-failed">Failed</span>
+                  <% } else if(b.bookingStatus === "cancelled"){ %>
+                  <span class="fw-semibold text-muted">Cancelled</span>
+                  <% }else{ %>
+                  <span class="status-badge status-pending">Pending</span>
+                  <% } %>
+                </td>
+
+              </tr>
+              <% }) %>
+            </tbody>
+
+          </table>
+        </div>
+
+        <div class="text-end mt-3">
+          <a href="/bookings" class="view-all-link">
+            View All →
+          </a>
+        </div>
+
+        <% } %>
+
+      </div>
+
+    </div>
+  </div>
+</section>

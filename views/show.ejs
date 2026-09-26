@@ -1,0 +1,85 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<div class="container py-5 main-container">
+  <div class="row justify-content-center main-show-container">
+    <div class="col-lg-7">
+      <div class="d-flex justify-content-between align-items-center mb-3 pt-2 pb-1 pb-md-2">
+        <h2 class="fw-bold mb-0"><%= slot.title %></h2>
+      </div>
+      <!-- Image -->
+      <div class="card shadow-sm mb-md-4 mb-3 show-card">
+        <div id="magnifying-area">
+          <img src="<%= slot.imageURL %>" class="card-img-top show-card-img " id="magnifying-image" alt="<%= slot.title %>" />
+        </div>
+      </div>
+
+      <!-- Title & Availability -->
+      <div class="d-flex justify-content-between align-items-center mb-1">
+
+      </div>
+
+      <!-- Location -->
+      <p class="text show-card-title mb-3 mb-md-4">
+        <i class="fa-solid fa-location-dot location-icon"></i><%= slot.location %>, <%= slot.country %>
+      </p>
+
+      <!-- Details Card -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-md-3 mb-3 ">
+              <p class="text mb-1">Vehicle Type</p>
+              <h6><%= slot.vehicleType.charAt(0).toUpperCase()+slot.vehicleType.slice(1) %></h6>
+            </div>
+            <div class="col-md-3 mb-3 ">
+              <p class="text mb-1">Parking Type</p>
+              <h6><%= slot.slotType.charAt(0).toUpperCase()+slot.slotType.slice(1) %></h6>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <p class="text mb-1">Price / Hour</p>
+              <h6>₹<%= slot.pricePerHour %></h6>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <p class="text mb-1">Status</p>
+              <h6>
+                <%= slot.isAvailable ? "Available" : "Occupied" %>
+              </h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body card-body-desc">
+          <h5 class="mb-2">About this parking spot</h5>
+          <p class="mb-0"><%= slot.description %></p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="d-flex gap-3 mb-4">
+        <% if (slot.isAvailable) { %>
+        <a href="/parking-slots/<%= slot._id %>/book" class="btn btn-lg teal-main-btn">
+          Book Now
+        </a>
+        <% } else { %>
+        <button class="btn  btn-book" disabled>
+          Not Available
+        </button>
+        <% } %>
+
+        <button onclick="history.back()" class="btn btn-lg btn-back">
+          Back
+        </button>
+      </div>
+
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/js/map.js"></script>

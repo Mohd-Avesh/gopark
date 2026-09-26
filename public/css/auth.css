@@ -1,0 +1,211 @@
+/* ===== Login Page ===== */
+
+.login-section {
+  background: #e0f2f1;
+}
+
+.login-card {
+  background: #ffffff;
+}
+
+.brand-text {
+  color: #008080;
+}
+
+.login-btn {
+  background: #008080;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #006666;
+}
+
+.forgot-link {
+  color: #008080;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.register-link {
+  color: #008080;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== AUTH PAGE BACKGROUND ===== */
+
+.auth-section {
+  min-height: 100vh;
+  background: #e0f2f1; /* your light teal background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 15px;
+}
+
+/* ===== CARD DESIGN ===== */
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== HEADING ===== */
+
+.auth-card h3 {
+  text-align: center;
+  font-weight: 700;
+  color: #008080;
+  margin-bottom: 25px;
+}
+
+/* ===== INPUT FIELDS ===== */
+
+/* .auth-card .form-control {
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid #cfd8dc;
+  transition: 0.3s ease;
+}
+
+.auth-card .form-control:focus {
+  border-color: #008080;
+  box-shadow: 0 0 0 0.15rem rgba(0, 128, 128, 0.2);
+} */
+
+/* ===== LABELS ===== */
+
+.auth-card label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* ===== BUTTON ===== */
+
+.auth-btn {
+  background: #008080;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.auth-btn:hover {
+  background: #006666;
+}
+
+/* ===== ERROR ALERT ===== */
+
+.auth-alert {
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* ===== LINK ===== */
+
+.auth-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.auth-link a {
+  color: #008080;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+
+
+/* verif email page*/
+
+
+.auth-section {
+  min-height: 100vh;
+  background: #e0f2f1; /* your theme variable */
+}
+
+.auth-card {
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+.brand-title h2 {
+  color: var(--primary-accent);
+}
+
+.brand-title span {
+  color: var(--secondary-accent);
+}
+
+.otp-input {
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  transition: 0.3s;
+}
+
+
+.resend-link {
+  color: #008080;
+  font-weight: 600;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.resend-link:hover {
+  text-decoration: none;
+}
+
+.resend-link.disabled {
+  color: gray;
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* error containers */
+.disabled {
+  color: gray;
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+.error-container{
+  color: #c62828;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+
+
+
+
+/* forgot password */
+.forgot-label{
+  font-size: 16px !important;
+}
+
+.success-color, .success-container{
+  color: #006666;
+}
+
+/* Resset password */

@@ -1,0 +1,57 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<section class="auth-section">
+  <div class="auth-card">
+
+    <!-- Heading -->
+    <h3>Contact <span class="brand-text">Us</span></h3>
+
+    <!-- Alerts -->
+    <% if (success) { %>
+    <div class="auth-alert success-container">
+      <%= success %>
+    </div>
+    <% } %>
+
+    <% if (error) { %>
+    <div class="auth-alert">
+      <%= error %>
+    </div>
+    <% } %>
+
+    <!-- Form -->
+    <form action="/contact" method="POST" novalidate id="contactForm">
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Name</label>
+        <input type="text" class="form-control rounded-3 slot-main-input" value="<%= user.name%>" readonly />
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email</label>
+        <input type="text" class="form-control rounded-3 slot-main-input" value="<%=user.email%>" readonly />
+      </div>
+
+
+      <!-- Message -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Message</label>
+        <textarea name="message" id="contactMessage" rows="4" class="form-control rounded-3 slot-main-input" placeholder="Write your message..."><%= typeof message !== 'undefined' ? message : '' %></textarea>
+        <small class="text-danger error-message" id="contactMessageError"></small>
+      </div>
+
+      <!-- Button -->
+      <div class="d-grid">
+        <button type="submit" class="teal-main-btn btn fs-5">
+          Send Message
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+<script src="/js/contactValidate.js" defer></script>
+<script src="/js/inputField.js"></script>

@@ -1,0 +1,25 @@
+<%- layout('layouts/boilerplate.ejs') %>
+
+<section class="profile-section">
+  <div class="container">
+    <div class="profile-card">
+      <!-- Profile Image -->
+      <div class="profile-image">
+        <span><%= user.name.charAt(0).toUpperCase() %></span>
+      </div>
+
+      <!-- Profile Info -->
+      <div class="profile-info">
+        <h2><%= user.name %></h2>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Phone:</strong> <%= user.phone %></p>
+        <p><strong>Joined On:</strong> <%= user.createdAt.toDateString() %></p>
+      </div>
+
+      <!-- Edit Button -->
+      <div class="profile-actions">
+        <a href="/profile/edit" class="btn btn-edit teal-main-btn">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+</section>

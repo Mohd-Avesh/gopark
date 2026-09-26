@@ -1,0 +1,74 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<section class="cancel-page">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="cancel-header text-center">
+      <h2 class="cancel-title">
+        <i class="bi bi-x-circle cancel-title-icon"></i>
+        Cancel <span class="text-teal">Booking</span>
+      </h2>
+      <p class="cancel-subtitle">
+        Please review your booking details before cancelling.
+      </p>
+    </div>
+
+    <!-- Cancel Card -->
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="cancel-card card">
+
+          <div class="cancel-card-body">
+
+            <h5 class="booking-details-heading">
+              <i class="bi bi-receipt"></i> Booking Details
+            </h5>
+
+            <div class="booking-detail-item">
+              <span><i class="bi bi-geo-alt"></i> Location</span>
+              <strong><%= spot.location.toString().split(", ").slice(0,2).join(" ")%></strong>
+            </div>
+
+            <div class="booking-detail-item">
+              <span><i class="bi bi-calendar-event"></i> Date</span>
+              <strong><%= booking.date.toString().split(" ").slice(0,4).join(" ")  %></strong>
+            </div>
+
+            <div class="booking-detail-item">
+              <span><i class="bi bi-clock"></i> Time Slot</span>
+              <strong><%= booking.startTime %> - <%= booking.endTime%></strong>
+            </div>
+
+            <div class="booking-detail-item">
+              <span><i class="bi bi-currency-rupee"></i> Amount to be paid</span>
+              <strong>₹ <%= booking.totalPrice %></strong>
+            </div>
+
+            <!-- Warning -->
+            <div class="cancel-warning">
+              <i class="bi bi-exclamation-triangle-fill warning-icon"></i>
+              Cancelling may affect refund eligibility.
+            </div>
+
+            <!-- Buttons -->
+            <div class="cancel-actions d-flex justify-content-between">
+              <a href="/bookings" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Go Back
+              </a>
+
+              <form action="/booking/<%= booking._id %>/cancel" method="POST">
+                <button class="btn confirm-cancel-btn">
+                  <i class="bi bi-trash"></i> Confirm Cancel
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
